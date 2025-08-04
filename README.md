@@ -338,6 +338,10 @@ hello-world                          latest    74cc54e27dc4   6 months ago      
 docker run -it exelixiquest/my-first-docker-image:V1
 
 ```
+```
+docker run -d -p 9090:9090 --name <Container-Name> <ImageName>
+
+```
 
 Output
 
