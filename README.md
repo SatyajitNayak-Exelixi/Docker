@@ -216,7 +216,7 @@ sudo systemctl start docker
 
 ### Grant Access to your user to run docker commands
 
-To grant access to your user to run the docker command, you should add the user to the Docker Linux group. Docker group is create by default when docker is installed.
+To grant access to your user to run the docker command, you should add the user to the Docker Linux group. Docker group is create by default when docker is installed. Add ubuntu user to Docker group.
 
 ```
 sudo usermod -aG docker ubuntu
@@ -252,7 +252,7 @@ This message shows that your installation appears to be working correctly.
 ### Clone this repository and move to example folder
 
 ```
-git clone https://github.com/iam-veeramalla/Docker-Zero-to-Hero
+git clone https://github.com/SatyajitNayak-Exelixi/Docker.git
 cd  examples
 ```
 
@@ -263,12 +263,18 @@ docker login
 ```
 
 ```
-Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
-Username: abhishekf5
-Password:
+ubuntu@ip-10-10-8-202:~$ docker login
+
+USING WEB-BASED LOGIN
+To sign in with credentials on the command line, use 'docker login -u <username>'
+
+Your one-time device confirmation code is: ZFWG-RDZC
+Press ENTER to open your browser or submit your device code here: https://login.docker.com/activate
+
+Waiting for authentication in the browser…
 WARNING! Your password will be stored unencrypted in /home/ubuntu/.docker/config.json.
 Configure a credential helper to remove this warning. See
-https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
 
 Login Succeeded
 ```
@@ -278,7 +284,7 @@ Login Succeeded
 You need to change the username accoringly in the below command
 
 ```
-docker build -t abhishekf5/my-first-docker-image:latest .
+docker build -t exelixiquest/my-first-docker-image:V1 .
 ```
 
 Output of the above command
@@ -308,7 +314,7 @@ Output of the above command
     Removing intermediate container 5d60ad3a59ff
      ---> 960d37536dcd
     Successfully built 960d37536dcd
-    Successfully tagged abhishekf5/my-first-docker-image:latest
+    docker run -it exelixiquest/my-first-docker-image:V1
 ```
 
 ### Verify Docker Image is created
@@ -320,16 +326,21 @@ docker images
 Output 
 
 ```
-REPOSITORY                         TAG       IMAGE ID       CREATED          SIZE
-abhishekf5/my-first-docker-image   latest    960d37536dcd   26 seconds ago   467MB
-ubuntu                             latest    58db3edaf2be   13 days ago      77.8MB
-hello-world                        latest    feb5d9fea6a5   16 months ago    13.3kB
+REPOSITORY                           TAG       IMAGE ID       CREATED              SIZE
+exelixiquest/my-first-docker-image   V1        40ba3c7e08b4   About a minute ago   557MB
+ubuntu                               latest    65ae7a6f3544   2 weeks ago          78.1MB
+hello-world                          latest    74cc54e27dc4   6 months ago         10.1kB
 ```
 
 ### Run your First Docker Container
 
 ```
-docker run -it abhishekf5/my-first-docker-image
+docker run -it exelixiquest/my-first-docker-image:V1
+
+```
+```
+docker run -d -p 9090:9090 --name <Container-Name> <ImageName>
+
 ```
 
 Output
@@ -341,19 +352,18 @@ Hello World
 ### Push the Image to DockerHub and share it with the world
 
 ```
-docker push abhishekf5/my-first-docker-image
+docker push exelixiquest/my-first-docker-image:V1
 ```
 
 Output
 
 ```
-Using default tag: latest
-The push refers to repository [docker.io/abhishekf5/my-first-docker-image]
-896818320e80: Pushed
-b8088c305a52: Pushed
-69dd4ccec1a0: Pushed
-c5ff2d88f679: Mounted from library/ubuntu
-latest: digest: sha256:6e49841ad9e720a7baedcd41f9b666fcd7b583151d0763fe78101bb8221b1d88 size: 1157
+The push refers to repository [docker.io/exelixiquest/my-first-docker-image]
+1138a44c6655: Pushed
+ec06e3d85a73: Pushed
+cf833b6e07a9: Pushed
+107cbdaeec04: Mounted from library/ubuntu
+V1: digest: sha256:a8eabc630db2898b8184dd53d6c8b5c205df84b0384f3b64a40be684f33b7dd6 size: 1155
 ```
 
 ### You must be feeling like a champ already 
