@@ -26,6 +26,24 @@ Volumes can be created and managed using the docker volume command. You can crea
 docker volume create <volume_name>
 ```
 
+Command to list the volumes :
+
+```
+docker volume ls
+```
+
+Command to inspect the volume :
+
+```
+docker volume inspect <volume_name>
+```
+
+Command to delete the  volume :
+
+```
+docker volume rm <volume_name>
+```
+
 Once a volume is created, you can mount it to a container using the -v or --mount option when running a docker run command. 
 
 For example:
@@ -34,8 +52,27 @@ For example:
 docker run -it -v <volume_name>:/data <image_name> /bin/bash
 ```
 
+Attach a volume to Nginx:
+
+```
+docker run -it --name nginx-container -p 8080:80 -v 2hubVolume:/usr/share/nginx/html nginx bash
+
+```
+
 This command will mount the volume <volume_name> to the /data directory in the container. Any data written to the /data directory
 inside the container will be persisted in the volume on the host file system.
+
+👉 If you just want to start nginx normally and then later exec into it, run:
+
+```
+docker run -d --name nginx-container -p 8080:80 -v 2hubVolume:/usr/share/nginx/html nginx
+```
+
+Then login to it with:
+
+```
+docker exec -it nginx-container bash
+```
 
 ### Bind Directory on a host as a Mount
 
